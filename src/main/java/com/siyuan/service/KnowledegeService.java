@@ -56,5 +56,16 @@ public interface KnowledegeService {
      */
     void delete(int id);
 
+    /**
+     * 获取科目的所有一级知识点
+     * @param cid
+     * @return
+     */
+    List<DifKnowledege> findOne(int cid);
+
+
+    List<DifKnowledege> findChild(int pid);
+
+
 
 }

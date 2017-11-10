@@ -19,4 +19,20 @@ public class TextMessageImpl implements TextMessageService{
 
         return repository.findAllBySubjectkind(SubjetId);
     }
+
+    /**
+     * 根据知识点找所有的题
+     * @param id
+     * @return
+     */
+
+    @Override
+    public List<TextMessage> findAllByExamId(int id) {
+        return repository.findAllByExamid(id);
+    }
+
+    @Override
+    public TextMessage save(TextMessage textMessage) {
+        return repository.save(textMessage);
+    }
 }

@@ -14,7 +14,7 @@ public class SubjectController {
     @Autowired
     private SubjectService subjectService;
     @CrossOrigin
-    @GetMapping("/getAll")
+    @GetMapping("/list")
     public List<DifSubjects> getAll(){
 
         return subjectService.findAll();

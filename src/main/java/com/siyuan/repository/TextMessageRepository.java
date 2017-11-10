@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface TextMessageRepository extends JpaRepository<TextMessage,Integer> {
     List<TextMessage> findAllBySubjectkind(String subjectId);
+    List<TextMessage> findAllByExamid(Integer examid);
 
 }

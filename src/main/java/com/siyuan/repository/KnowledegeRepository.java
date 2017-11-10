@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface KnowledegeRepository extends JpaRepository<DifKnowledege,Integer> {
     public List<DifKnowledege> findAllByCid(Integer id);
+    public List<DifKnowledege> findAllByPid(Integer pid);
 }

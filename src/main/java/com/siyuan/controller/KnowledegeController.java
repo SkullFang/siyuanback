@@ -138,5 +138,22 @@ public class KnowledegeController {
         knowledegeService.delete(id);
     }
 
+    /**
+     *
+     * @param cid
+     * @return
+     */
+    @GetMapping("/findOne/{cid}")
+    List<DifKnowledege> findOne(@PathVariable("cid") Integer cid){
+
+        return knowledegeService.findOne(cid);
+
+    }
+
+    @GetMapping("/findChild/{pid}")
+    List<DifKnowledege> findChild(@PathVariable("pid") Integer pid){
+        return knowledegeService.findChild(pid);
+    }
+
 
 }

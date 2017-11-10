@@ -55,4 +55,10 @@ public class TextMessageRepositoryTest {
 
     }
 
+    @Test
+    public void findALlbyExam(){
+        List<TextMessage> result=repository.findAllByExamid(1);
+        Assert.assertNotEquals(0,result.size());
+    }
+
 }

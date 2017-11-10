@@ -39,5 +39,11 @@ public class KnowledegeRepositoryTest {
 
     }
 
+    @Test
+    public void findByPid(){
+        List<DifKnowledege> result=repository.findAllByPid(32);
+        Assert.assertNotEquals(0,result.size());
+    }
+
 
 }

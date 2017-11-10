@@ -10,4 +10,5 @@ public interface SubjectService {
     DifSubjects update(int id,String newName);
     DifSubjects findById(int id);
     void delete(int id);
+
 }

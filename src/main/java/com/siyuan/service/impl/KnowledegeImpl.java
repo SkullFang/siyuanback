@@ -6,6 +6,7 @@ import com.siyuan.service.KnowledegeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -71,6 +72,29 @@ public class KnowledegeImpl implements KnowledegeService {
     @Override
     public void delete(int id) {
         repository.delete(id);
+    }
+
+    /**
+     *
+     * @param cid
+     * @return
+     */
+    @Override
+    public List<DifKnowledege> findOne(int cid) {
+        List<DifKnowledege> resultTemp=repository.findAllByCid(cid);
+        List<DifKnowledege> result=new ArrayList<>();
+        for(DifKnowledege difKnowledege:resultTemp){
+            if(difKnowledege.getPid()==0 && difKnowledege.getType()==1){
+                result.add(difKnowledege);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public List<DifKnowledege> findChild(int pid) {
+        return repository.findAllByPid(pid);
     }
 
 
