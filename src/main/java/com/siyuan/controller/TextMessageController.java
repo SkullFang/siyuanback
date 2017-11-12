@@ -41,7 +41,7 @@ public class TextMessageController {
      */
 
     @PostMapping("/saveChoice/{subjectid}")
-    TextMessage save(@PathVariable("subjectid") String subjectId,
+    TextMessage saveXuan(@PathVariable("subjectid") String subjectId,
                      TextMessage textMessage){
         textMessage.setSubjectkind(subjectId);
         textMessage.setExamid(textMessage.getExamid());
@@ -53,6 +53,29 @@ public class TextMessageController {
         textMessage.setB(textMessage.getB());
         textMessage.setC(textMessage.getC());
         textMessage.setD(textMessage.getD());
+        textMessage.setAnswer(textMessage.getAnswer());
+        textMessage.setAnalysis(textMessage.getAnalysis());
+
+        return textMessageService.save(textMessage);
+
+    }
+
+    /**
+     * 填空题上传
+     * @param subjectId
+     * @param textMessage
+     * @return
+     */
+
+    @PostMapping("/saveTian/{subjectid}")
+    TextMessage saveTian(@PathVariable("subjectid") String subjectId,
+                     TextMessage textMessage){
+        textMessage.setSubjectkind(subjectId);
+        textMessage.setExamid(textMessage.getExamid());
+        textMessage.setType(1);
+        textMessage.setIsshow(textMessage.getIsshow());
+        textMessage.setHardlevel(textMessage.getHardlevel());
+        textMessage.setTitlebody(textMessage.getTitlebody());
         textMessage.setAnswer(textMessage.getAnswer());
         textMessage.setAnalysis(textMessage.getAnalysis());
 
