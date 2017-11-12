@@ -45,5 +45,16 @@ public class KnowledegeRepositoryTest {
         Assert.assertNotEquals(0,result.size());
     }
 
+    @Test
+    public void findByCname(){
+        DifKnowledege difKnowledege=repository.findByCname("集合");
+        int m=difKnowledege.getId();
+        Assert.assertEquals(1,m);
+
+
+
+    }
+
+
 
 }

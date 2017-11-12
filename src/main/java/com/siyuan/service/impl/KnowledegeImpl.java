@@ -92,9 +92,25 @@ public class KnowledegeImpl implements KnowledegeService {
         return result;
     }
 
+    /**
+     * 根据PID找自己的儿子
+     * @param pid
+     * @return
+     */
+
     @Override
     public List<DifKnowledege> findChild(int pid) {
         return repository.findAllByPid(pid);
+    }
+
+    /**
+     * 根据名字找ID
+     * @param cname
+     * @return
+     */
+    @Override
+    public DifKnowledege findByName(String cname) {
+        return repository.findByCname(cname);
     }
 
 

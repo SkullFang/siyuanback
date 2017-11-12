@@ -63,9 +63,19 @@ public interface KnowledegeService {
      */
     List<DifKnowledege> findOne(int cid);
 
-
+    /**
+     * 找儿子
+     * @param pid
+     * @return
+     */
     List<DifKnowledege> findChild(int pid);
 
+    /**
+     * 根据名字找ID
+     * @param cname
+     * @return
+     */
+    DifKnowledege findByName(String cname);
 
 
 }

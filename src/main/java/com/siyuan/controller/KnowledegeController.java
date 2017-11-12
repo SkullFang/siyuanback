@@ -155,5 +155,14 @@ public class KnowledegeController {
         return knowledegeService.findChild(pid);
     }
 
+    @GetMapping("/findByName/{cname}")
+    int findByName(@PathVariable("cname") String cname){
+        DifKnowledege difKnowledege=knowledegeService.findByName(cname);
+        if(difKnowledege!=null){
+            return difKnowledege.getId();
+        }else{
+            return -1;
+        }
+    }
 
 }

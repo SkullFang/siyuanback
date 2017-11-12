@@ -72,7 +72,7 @@ public class TextMessageController {
                      TextMessage textMessage){
         textMessage.setSubjectkind(subjectId);
         textMessage.setExamid(textMessage.getExamid());
-        textMessage.setType(1);
+        textMessage.setType(2);
         textMessage.setIsshow(textMessage.getIsshow());
         textMessage.setHardlevel(textMessage.getHardlevel());
         textMessage.setTitlebody(textMessage.getTitlebody());
@@ -82,5 +82,37 @@ public class TextMessageController {
         return textMessageService.save(textMessage);
 
     }
+
+    @PostMapping("/savePan/{subjectid}")
+    TextMessage savePan(@PathVariable("subjectid") String subjectId,
+                        TextMessage textMessage){
+        textMessage.setSubjectkind(subjectId);
+        textMessage.setExamid(textMessage.getExamid());
+        textMessage.setType(3);
+        textMessage.setIsshow(textMessage.getIsshow());
+        textMessage.setHardlevel(textMessage.getHardlevel());
+        textMessage.setTitlebody(textMessage.getTitlebody());
+        textMessage.setAnswer(textMessage.getAnswer());
+        textMessage.setAnalysis(textMessage.getAnalysis());
+
+        return textMessageService.save(textMessage);
+
+    }
+
+    @PostMapping("/saveYing/{subjectid}")
+    TextMessage saveYing(@PathVariable("subjectid") String subjectId,
+                        TextMessage textMessage){
+        textMessage.setSubjectkind(subjectId);
+        textMessage.setExamid(textMessage.getExamid());
+        textMessage.setType(4);
+        textMessage.setIsshow(textMessage.getIsshow());
+        textMessage.setHardlevel(textMessage.getHardlevel());
+        textMessage.setTitlebody(textMessage.getTitlebody());
+        textMessage.setAnalysis(textMessage.getAnalysis());
+
+        return textMessageService.save(textMessage);
+
+    }
+
 
 }
