@@ -51,9 +51,8 @@ public class KnowledegeRepositoryTest {
         int m=difKnowledege.getId();
         Assert.assertEquals(1,m);
 
-
-
     }
+
 
 
 

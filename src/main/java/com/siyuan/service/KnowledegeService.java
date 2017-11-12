@@ -1,7 +1,9 @@
 package com.siyuan.service;
 
 import com.siyuan.dataobject.DifKnowledege;
+import jdk.internal.util.xml.impl.Input;
 
+import java.io.InputStream;
 import java.util.List;
 
 public interface KnowledegeService {
@@ -76,6 +78,13 @@ public interface KnowledegeService {
      * @return
      */
     DifKnowledege findByName(String cname);
+
+    /**
+     * 解析excel表格
+     * 存入数据库
+     */
+    void parseAndSave(InputStream inputStream);
+
 
 
 }

@@ -1,11 +1,16 @@
 package com.siyuan.service.impl;
 
 import com.siyuan.dataobject.DifKnowledege;
+import com.siyuan.dataobject.ExcelItem;
+import com.siyuan.dataobject.TextMessage;
 import com.siyuan.repository.KnowledegeRepository;
 import com.siyuan.service.KnowledegeService;
+import com.siyuan.service.TextMessageService;
+import com.siyuan.utils.ExcelParse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +18,9 @@ import java.util.List;
 public class KnowledegeImpl implements KnowledegeService {
     @Autowired
     KnowledegeRepository repository;
+
+    @Autowired
+    TextMessageService textMessageService;
 
     @Override
     public List<DifKnowledege> findByid(Integer cid) {
@@ -113,5 +121,23 @@ public class KnowledegeImpl implements KnowledegeService {
         return repository.findByCname(cname);
     }
 
-
+    @Override
+    public void parseAndSave(InputStream inputStream){
+//        ArrayList<ExcelItem> items = ExcelParse.parseTest("excelPath");
+        ArrayList<ExcelItem> items = ExcelParse.parseExcelStream(inputStream);
+        DifKnowledege knowledege = null;
+        TextMessage textMessage = null;
+        for(ExcelItem item : items){
+            String itemName = item.getItemName();
+            knowledege = repository.findByCname(itemName);
+//            int examid = -1;
+//            如果在数据库中没有找到examid，那么这条数据不插入数据库中
+            if(knowledege != null){
+                textMessage = new TextMessage(knowledege.getId(),"1",item.getItemQues(), item.getItemAns(), item.getItemLevel(),
+                        item.getItemAnsA(), item.getItemAnsB(), item.getItemAnsC(), item.getItemAnsD(),
+                        "", item.getItemAnaly(), item.getItemShow(),item.getItemType());
+                textMessageService.save(textMessage);
+            }
+        }
+    }
 }
